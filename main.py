@@ -1,13 +1,15 @@
 import requests
 import re
 import pandas as pd
+from dotenv import load_dotenv
+import os
 
 def get_event_ids(year, week):
     url = f"https://nfl-football-api.p.rapidapi.com/nfl-events?year={str(year)}"
 
     headers = {
         "x-rapidapi-host": "nfl-football-api.p.rapidapi.com",
-        "x-rapidapi-key": "826c8c237cmsh093c58ff216e09bp1d9846jsn7846b2e6854d"  # Replace with your API key
+        "x-rapidapi-key": api_key  # Replace with your API key
     }
 
     # Send the GET request
@@ -39,7 +41,7 @@ def get_game_data(game_id):
 
     headers = {
         "x-rapidapi-host": "nfl-football-api.p.rapidapi.com",
-        "x-rapidapi-key": "826c8c237cmsh093c58ff216e09bp1d9846jsn7846b2e6854d"  # Replace with your API key
+        "x-rapidapi-key": api_key  # Replace with your API key
     }
 
     # Send the GET request
@@ -113,8 +115,12 @@ def create_file(year, week):
     df.to_excel(f"week{str(week)}-{str(year)}-nfl-player-stats.xlsx")
 
 def main():
+    load_dotenv()
+
     global db
+    global api_key
     db = {}
+    api_key = os.getenv("API_KEY")
 
     year = int(input("Year: ").strip())
     week = int(input("Week").strip())
