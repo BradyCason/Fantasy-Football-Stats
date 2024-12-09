@@ -123,7 +123,7 @@ def main():
     api_key = os.getenv("API_KEY")
 
     year = int(input("Year: ").strip())
-    week = int(input("Week").strip())
+    week = int(input("Week: ").strip())
 
     event_ids = get_event_ids(year, week)
     for id in event_ids:
