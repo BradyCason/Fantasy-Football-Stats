@@ -1,3 +1,6 @@
+# Fantasy Football Stats
+Creates an excel spreadsheet of stats for all players in 1 NFL Week
+
 # How to use
 - Create a file named ".env" in the main directory and put the following text:
 ```
